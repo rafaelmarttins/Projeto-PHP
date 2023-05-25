@@ -1,0 +1,25 @@
+--CRIAÇÃO DO BANCO 
+CREATE DATABASE Mercado
+
+-CRIAÇÃO DAS TABELAS
+CREATE TABLE Produto (
+    CodigoProduto INT AUTO_INCREMENT PRIMARY KEY,
+    Descricao VARCHAR(255) UNIQUE,
+    Quantidade INT,
+    DataInsercao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ListaCompras (
+    CodigoLista INT AUTO_INCREMENT PRIMARY KEY,
+    NomeLista VARCHAR(255) NOT NULL,
+    DataInsercao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE itemlista (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    CodigoLista INT,
+    CodigoProduto INT,
+    Quantidade INT,
+    FOREIGN KEY (codigolista) REFERENCES listacompras(codigolista),
+    FOREIGN KEY (codigoproduto) REFERENCES produto(codigoproduto)
+);
